@@ -1,14 +1,13 @@
-# NOTE: not ready yet. 
+# Run Jenkins builds that use docker
 
-Docker registry is not working correctly with github groups at this time - so please be patient!
+This is a docker image that contains Jenkins, and has the ability to run docker, itself, inside docker!
+(crazy, I know).
 
-# Jenkins in Docker
-
-You can run jenkins in docker: 
     
-    docker run -p 8080:8080  cloudbees/jenkins-docker
+    docker run -p 8080:8080 -privileged michaelneale/jenkins-docker-executors
 
-This will download, and then run Jenkins in a docker container - on port 8080.
+
+This will download, and then run Jenkins in a docker container - on port 8080. 
 
 You can see your docker conatiner running with:
 
@@ -16,5 +15,8 @@ You can see your docker conatiner running with:
 
 If you with to use a volume outside to store your workspace, you can with bind mounting and setting the JENKINS_HOME directory. 
 
+If you wish to use docker in a build - you can. You can just use the `docker` command from a freestyle build, it will work just like expect it would. 
+
+This works via the exellent work covered here https://github.com/jpetazzo/dind
 
 
