@@ -2,6 +2,7 @@ FROM ubuntu:12.04
 MAINTAINER Michael Neale <mneale@cloudbees.com
 
 # First, let us install Jenkins - as per https://github.com/cloudbees/jenkins-docker
+RUN echo "0.11" > .version
 RUN apt-get update
 RUN echo deb http://pkg.jenkins-ci.org/debian binary/ >> /etc/apt/sources.list
 RUN apt-get install -y wget
