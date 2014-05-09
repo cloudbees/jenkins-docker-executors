@@ -10,6 +10,7 @@ RUN wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key a
 RUN apt-get update
 RUN apt-get install -y jenkins
 
+
 # now we install docker in docker - thanks to https://github.com/jpetazzo/dind
 RUN echo deb http://archive.ubuntu.com/ubuntu precise universe > /etc/apt/sources.list.d/universe.list
 RUN apt-get update -qq
@@ -19,6 +20,6 @@ ADD ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/docker /usr/local/bin/wrapdocker
 VOLUME /var/lib/docker
 
-
+RUN apt-get install -y git
 
 CMD wrapdocker && java -jar /usr/share/jenkins/jenkins.war
