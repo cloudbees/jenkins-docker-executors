@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# If we have docker bind mounted in - no need.
+if [ -e /var/run/docker.sock ];
+then
+   echo "docker is already running"
+   exit 
+fi
+
+
+
 # First, make sure that cgroups are mounted correctly.
 CGROUP=/sys/fs/cgroup
 
