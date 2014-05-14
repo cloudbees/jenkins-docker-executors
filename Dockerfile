@@ -22,4 +22,4 @@ VOLUME /var/lib/docker
 
 RUN apt-get install -y git
 
-CMD wrapdocker && java -jar /usr/share/jenkins/jenkins.war
+CMD wrapdocker && exec java -jar /usr/share/jenkins/jenkins.war

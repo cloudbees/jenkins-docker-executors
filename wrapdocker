@@ -1,13 +1,13 @@
 #!/bin/bash
 
+
 # If we have docker bind mounted in - no need.
-if [ -e /var/run/docker.sock ];
-then
-   echo "docker is already running"
-   exit 
+if (docker version); then
+    echo "Docker is already bind mounted in - we are good to go..."
+    exit
 fi
 
-
+echo "----- No docker socket bind mounted in, so lets attempt to wrap it DIND style ----"
 
 # First, make sure that cgroups are mounted correctly.
 CGROUP=/sys/fs/cgroup
@@ -17,7 +17,7 @@ CGROUP=/sys/fs/cgroup
 
 mountpoint -q $CGROUP || 
 	mount -n -t tmpfs -o uid=0,gid=0,mode=0755 cgroup $CGROUP || {
-		echo "Could not make a tmpfs mount. Did you use -privileged?"
+		echo "Could not make a tmpfs mount. Did you use --privileged?"
 		exit 1
 	}
 
