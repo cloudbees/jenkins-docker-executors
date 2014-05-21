@@ -21,5 +21,5 @@ ADD ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/docker /usr/local/bin/wrapdocker
 VOLUME /var/lib/docker
 
-
+# Make sure we exec to pass on signals correctly
 CMD wrapdocker && exec java -jar /usr/share/jenkins/jenkins.war
