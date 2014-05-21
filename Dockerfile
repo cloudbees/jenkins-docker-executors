@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:12.04
 MAINTAINER Michael Neale <mneale@cloudbees.com
 
 # First, let us install Jenkins - as per https://github.com/cloudbees/jenkins-docker
